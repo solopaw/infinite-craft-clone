@@ -1,85 +1,46 @@
-//root layout
+import "@/css/satoshi.css";
+import "@/css/style.css";
 
-import './globals.css'
-import { Inter } from 'next/font/google'
-import { Metadata } from 'next'
-import { ReactNode } from 'react'
-import { cn } from '@/lib/utils'
-import { siteConfig } from '@/config/site'
+import { Sidebar } from "@/components/Layouts/sidebar";
+
+import "flatpickr/dist/flatpickr.min.css";
+import "jsvectormap/dist/jsvectormap.css";
+
+import { Header } from "@/components/Layouts/header";
+import type { Metadata } from "next";
+import NextTopLoader from "nextjs-toploader";
+import type { PropsWithChildren } from "react";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    template: "%s | NextAdmin - Next.js Dashboard Kit",
+    default: "NextAdmin - Next.js Dashboard Kit",
   },
-    description: siteConfig.description,
-    keywords: siteConfig.keywords,
-    authors: siteConfig.authors,
-    creator: siteConfig.authors[0].name,
-    openGraph: {
-        title: siteConfig.name,
-        description: siteConfig.description,
-        url: siteConfig.url,
-        siteName: siteConfig.name,
-        images: [
-            {
-                url: `${siteConfig.url}/og.jpg`,
-                width: 1200,
-                height: 630,
-            },
-        ],
-        locale: 'en_US',
-        type: 'website',
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: siteConfig.name,
-        description: siteConfig.description,
-        images: [`${siteConfig.url}/og.jpg`],
-        creator: siteConfig.twitter,
-    },
-    icons: {
-        icon: '/favicon.ico',
-        shortcut: '/favicon-16x16.png',
-        apple: '/apple-touch-icon.png',
-        other: [
-            {
-                rel: 'icon',
-                url: '/favicon-32x32.png',
-            },
-        ],
-    },
-    manifest: '/site.webmanifest',
-    themeColor: '#ffffff',
-    appleWebApp: {
-        capable: true,
-        title: siteConfig.name,
-        statusBarStyle: 'default',
-    },
-    formatDetection: {
-        email: false,
-        address: false,
-        telephone: false,
-    },
-    metadataBase: new URL(siteConfig.url),
-}
+  description:
+    "Next.js admin dashboard toolkit with 200+ templates, UI components, and integrations for fast dashboard development.",
+};
 
-const inter = Inter({ subsets: ['latin'] })
-
-export const dynamic = 'force-dynamic'
-
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('min-h-screen bg-background font-sans antialiased', inter.className)}>
-       
-            {children}
-            
+      <body>
+        <Providers>
+          <NextTopLoader color="#5750F1" showSpinner={false} />
+
+          <div className="flex min-h-screen">
+            <Sidebar />
+
+            <div className="w-full bg-gray-2 dark:bg-[#020d1a]">
+              <Header />
+
+              <main className="isolate mx-auto w-full max-w-screen-2xl overflow-hidden p-4 md:p-6 2xl:p-10">
+                {children}
+              </main>
+            </div>
+          </div>
+        </Providers>
       </body>
     </html>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-import type { Config } from "tailwindcss";
-import defaultTheme from "tailwindcss/defaultTheme";
+import type { C as Config } from "tailwindcss/dist/types-B254mqw1.mjs";
+import defaultTheme from "tailwindcss/dist/default-theme";
 
 const config: Config = {
   content: ["./src/**/*.{js,jsx,tsx}"],
-  darkMode: ["class"],
+  darkMode:'class',
   theme: {
     extend: {
       fontFamily: {
