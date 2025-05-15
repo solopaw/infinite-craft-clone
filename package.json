@@ -4,16 +4,22 @@
   "description": "",
   "main": "test.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@types/node": "^22.15.18"
+    "@types/node": "^22.15.18",
+    "typescript": "5.8.3"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.6",
     "@types/react": "^19.1.4",
     "apexcharts": "^4.7.0",
     "autoprefixer": "^10.4.20",
