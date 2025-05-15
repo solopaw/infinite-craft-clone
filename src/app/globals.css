@@ -328,24 +328,6 @@
   }
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
 @utility no-scrollbar {
   /* Chrome, Safari and Opera */
   &::-webkit-scrollbar {
@@ -377,6 +359,24 @@
 
 @utility inbox-height {
   @apply h-[calc(100vh-8.125rem)] lg:h-[calc(100vh-5.625rem)];
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
 }
 
 @layer base {
@@ -797,7 +797,7 @@ span.flatpickr-weekday,
 }
 
 .rangeSliderTwo .noUi-horizontal .noUi-handle {
-  @apply -top-2 h-6 w-6 rounded-full border-[6px] border-primary bg-white shadow-none dark:bg-dark;
+  @apply -top-2 h-6 w-6 rounded-full border-6 border-primary bg-white shadow-none dark:bg-dark;
 }
 
 .noUi-horizontal .noUi-handle:after,
