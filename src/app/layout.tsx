@@ -6,6 +6,10 @@ const poppins = Poppins({
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
     variable: '--font-poppins',
 })
+export const metadata = {
+    title: 'Next.js 13.4+ App Router + Tailwind CSS + TypeScript + ESLint + Prettier + Husky + Commitlint + Lint Staged',
+    description: 'Next.js 13.4+ App Router + Tailwind CSS + TypeScript + ESLint + Prettier + Husky + Commitlint + Lint Staged',
+}
 export default function RootLayout({
     children,
     }: {
